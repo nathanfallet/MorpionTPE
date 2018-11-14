@@ -1,10 +1,9 @@
-#Jeu de type morpion : cas d'une grille carrée à neuf cases
+# Jeu du morpion
+# Le joueur commence a jouer en premier, l'ordinateur joue ensuite
 
-#Le joueur commence à jouer en premier, l'ordinateur joue ensuite
-
-#coding: utf-8
-
-import numpy # import de la librairie numpy
+# Import des bibliotheques necessaires au programme
+import numpy
+from game import *
 
 def play():
  #Choix du joueur :
@@ -64,7 +63,7 @@ T=numpy.array([[1,1,1],[1,1,1],[1,1,1]])
 while len(M[M=="a"])>0: #test au fur et à mesure pour savoir si la partie peut encore avancer
 
  play()
- 
+
  print("") # retour à la ligne pour ahérer l'affichage
  print(M) #retour à l'écran de l'état d'avancement du jeu suite au choix de l'ordinateur
  print("") # retour à la ligne pour ahérer l'affichage
