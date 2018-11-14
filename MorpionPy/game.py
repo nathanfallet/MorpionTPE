@@ -1,5 +1,4 @@
 # Class Game - Gestion du tableau de jeu
-
 class Game:
 
     # Initialisation du tableau de jeu
@@ -9,6 +8,7 @@ class Game:
 
     # Affichage du tableau
     def show(self):
+        print("")
         line = "  "
         for x in range(self.size):
             line += str(x+1)
@@ -18,25 +18,26 @@ class Game:
             for x in range(self.size):
                 line += self.table[x][y]
             print(line)
+        print("")
 
     # Change la valeur d'une case si libre
     def play(self, x, y, player):
-        if(self.table[x][y] == "*"):
+        if x >= 0 and x < self.size and y >= 0 and y < self.size and self.table[x][y] == "*":
             self.table[x][y] = player
             return True
         return False
 
     # Regarde si un joueur a gagne
-    def win(self):
+    def win(self, table):
         for i in range(self.size):
-            line = self.line(self.table, i)
+            line = self.line(table, i)
             if line != "*":
                 return line
-            col = self.col(self.table, i)
+            col = self.col(table, i)
             if col != "*":
                 return col
         for i in range(2):
-            dia = self.dia(self.table, i)
+            dia = self.dia(table, i)
             if dia != "*":
                 return dia
         return "*"
@@ -64,12 +65,13 @@ class Game:
         return player
 
     # Verifie une diagonale
-    # TODO: deuxième diagonale
     def dia(self, table, d):
-        player = table[0][0]
+        i = (0 if d == 0 else self.size-1)
+        player = table[i][0]
         changed = False
         for x in range(self.size):
-            if table[x][x] != player:
+            i = (x if d == 0 else self.size-1-x)
+            if table[i][x] != player:
                 changed = True
         if changed:
             return "*"

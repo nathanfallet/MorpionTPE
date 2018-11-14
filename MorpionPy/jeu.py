@@ -3,7 +3,6 @@
 
 # Import des bibliotheques necessaires au programme
 import numpy
-from game import *
 
 def play():
  #Choix du joueur :
