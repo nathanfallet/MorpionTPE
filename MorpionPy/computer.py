@@ -1,18 +1,24 @@
 # Import des bibliotheques necessaires au programme
 from player import *
+from copy import deepcopy
+from random import randint
 
 # Class Computer - Implementation de Player pour l'ordinateur
 class Computer(Player):
 
     # TODO: Corriger le bug de la boucle infinie (ecriture dans le mauvais tableau)
     def play(self, game):
-        print("Play for computer")
+        other = ("X" if self.sign == "O" else "O")
         for x in range(game.size):
             for y in range(game.size):
-                print("Test for "+str(x)+", "+str(y))
                 if game.table[x][y] == "*":
-                    copy = list(game.table)
+                    copy = deepcopy(game.table)
                     copy[x][y] = self.sign
                     if game.win(copy) == self.sign:
                         return (x, y)
-        return (0, 0)
+                    copy[x][y] = other
+                    if game.win(copy) == other:
+                        return (x, y)
+        return (randint(0, game.size-1), randint(0, game.size-1))
+
+    

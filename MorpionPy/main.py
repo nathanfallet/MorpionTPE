@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+#!/usr/local/bin/python3
 
 # Jeu du morpion
 # Le joueur commence a jouer en premier, l'ordinateur joue ensuite
@@ -12,20 +12,19 @@ from computer import *
 # Choix de la taille de la grille
 size = 0
 while size < 3 or size > 6:
-    size = int(input("Choisissez une taille (entre 3 et 6): "))
+    size = int(input("Choisissez une taille (entre 3 et 6) : "))
 
-# Deroulement du jeu
-game = Game(size)
-players = [Human("X"), Computer("O")]
-win = "*"
+# Choix de la configuration
+print("\n1 - Joueur contre joueur\n2 - Joueur contre ordinateur\n3 - Ordinateur contre joueur\n4 - Ordinateur contre ordinateur\n")
+config = 0
+while config < 1 or config > 4:
+    config = int(input("Choisissez une configuration : "))
 
-while win == "*":
-    game.show()
-    for player in players:
-        x = y = -1
-        while not game.play(x, y, player.sign):
-            (x, y) = player.play(game)
-        print(player.sign+" joue en "+str(x+1)+", "+str(y+1))
-    win = game.win(game.table)
-
-print("A gagne le joueur "+win)
+if config == 1:
+    Game(size, Human("X"), Human("O")).start()
+elif config == 2:
+    Game(size, Human("X"), Computer("O")).start()
+elif config == 3:
+    Game(size, Computer("X"), Human("O")).start()
+else:
+    Game(size, Computer("X"), Computer("O")).start()

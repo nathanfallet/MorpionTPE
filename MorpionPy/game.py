@@ -2,9 +2,28 @@
 class Game:
 
     # Initialisation du tableau de jeu
-    def __init__(self, size):
+    def __init__(self, size, player1, player2):
         self.size = size
         self.table = [["*" for x in range(size)] for y in range(size)]
+        self.player1 = player1
+        self.player2 = player2
+
+    # Deroulement de la partie
+    def start(self):
+        win = "*"
+        while win == "*" and not self.full():
+            self.show()
+            for player in [self.player1, self.player2]:
+                x = y = -1
+                while not self.play(x, y, player.sign) and not self.full():
+                    (x, y) = player.play(self)
+                print(player.sign+" joue en "+str(x+1)+", "+str(y+1))
+            win = self.win(self.table)
+        self.show()
+        if win == "*":
+            print("Match nul !")
+            return
+        print(win+" remporte la partie !")
 
     # Affichage du tableau
     def show(self):
@@ -76,3 +95,10 @@ class Game:
         if changed:
             return "*"
         return player
+
+    def full(self):
+        for x in range(self.size):
+            for y in range(self.size):
+                if self.table[x][y] == "*":
+                    return False
+        return True
