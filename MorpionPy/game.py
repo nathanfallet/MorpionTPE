@@ -11,13 +11,14 @@ class Game:
     # Deroulement de la partie
     def start(self):
         win = "*"
-        while win == "*" and not self.full():
+        while win == "*" and not self.full(self.table):
             self.show()
             for player in [self.player1, self.player2]:
                 x = y = -1
-                while not self.play(x, y, player.sign) and not self.full():
+                while not self.play(x, y, player.sign) and not self.full(self.table):
                     (x, y) = player.play(self)
-                print(player.sign+" joue en "+str(x+1)+", "+str(y+1))
+                if x != -1 and y != -1:
+                    print(player.sign+" joue en "+str(x+1)+", "+str(y+1))
             win = self.win(self.table)
         self.show()
         if win == "*":
@@ -30,12 +31,12 @@ class Game:
         print("")
         line = "  "
         for x in range(self.size):
-            line += str(x+1)
+            line += str(x+1)+" "
         print(line)
         for y in range(self.size):
             line = str(y+1)+" "
             for x in range(self.size):
-                line += self.table[x][y]
+                line += self.table[x][y]+" "
             print(line)
         print("")
 
@@ -96,9 +97,9 @@ class Game:
             return "*"
         return player
 
-    def full(self):
+    def full(self, table):
         for x in range(self.size):
             for y in range(self.size):
-                if self.table[x][y] == "*":
+                if table[x][y] == "*":
                     return False
         return True
