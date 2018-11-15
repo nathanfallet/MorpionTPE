@@ -12,10 +12,6 @@ Version Python du Morpion avec son IA
 - human.py : Class qui gère le jeu de l'humain
 - computer.py : Class qui gère le jeu de l'IA
 
-### MorpionJava/
-
-Début de code en Java. Abandonné car il fallait le faire en Python
-
 ## Version d'essai en ligne
 
 [Interpréteur Python en ligne](https://repl.it/@NathanFallet/MorpionTPE)
