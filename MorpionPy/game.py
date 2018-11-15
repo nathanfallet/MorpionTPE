@@ -14,11 +14,12 @@ class Game:
         while win == "*" and not self.full(self.table):
             self.show()
             for player in [self.player1, self.player2]:
-                x = y = -1
-                while not self.play(x, y, player.sign) and not self.full(self.table):
-                    (x, y) = player.play(self)
-                if x != -1 and y != -1:
-                    print(player.sign+" joue en "+str(x+1)+", "+str(y+1))
+                if not self.full(self.table):
+                    print("Au tour de "+player.sign+" de jouer !")
+                    x = y = -1
+                    while not self.play(x, y, player.sign):
+                        (x, y) = player.play(self)
+                    print(player.sign+" joue ligne "+str(y+1)+", colonne "+str(x+1))
             win = self.win(self.table)
         self.show()
         if win == "*":
