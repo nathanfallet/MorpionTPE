@@ -1,4 +1,4 @@
-# MorpionTPE, une intelligence artificielle qui gagne à 100% au morpion
+# MorpionTPE, une intelligence artificielle imbattable au morpion
 
 ## Description du package
 
