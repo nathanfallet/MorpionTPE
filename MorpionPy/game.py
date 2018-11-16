@@ -12,15 +12,15 @@ class Game:
     def start(self):
         win = "*"
         while win == "*" and not self.full(self.table):
-            self.show()
             for player in [self.player1, self.player2]:
-                if not self.full(self.table):
+                if not self.full(self.table) and win == "*":
+                    self.show()
                     print("Au tour de "+player.sign+" de jouer !")
                     x = y = -1
                     while not self.play(x, y, player.sign):
                         (x, y) = player.play(self)
                     print(player.sign+" joue ligne "+str(y+1)+", colonne "+str(x+1))
-            win = self.win(self.table)
+                    win = self.win(self.table)
         self.show()
         if win == "*":
             print("Match nul !")
