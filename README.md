@@ -42,23 +42,23 @@ Cette commande va automatiquement mettre à jour le dossier.
 
 L'intelligence artificielle se fonde sur l'hypothèse que le processus de pensée humaine peut être mécanisé. Cela commence dès l’antiquité mais prend une toute autre dimension avec l’arrivé des composants électroniques.
 
-Notre intelligence artificielle sera composé d’un algorithme, c’est à dire une suite d’instructions qui seront exécutés les unes après les autres, et d’une logique statistique, qui va étudier les cas possible de jeu afin de gagner à chaque partie.
+Notre intelligence artificielle sera composée d’un algorithme, c’est à dire une suite d’instructions qui seront exécutées les unes après les autres, et d’une logique statistique, qui va étudier les cas possibles de jeu afin de gagner à chaque partie.
 
-Nous allons dans un premier temps construire le morpion en lui même, et ensuite y intégrer notre intelligence artificielle contre lequel on pourra jouer.
+Nous allons, dans un premier temps, construire le morpion en lui même, et ensuite y intégrer notre intelligence artificielle contre laquelle on pourra jouer.
 
 ### Construction du morpion
 
 Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour dont le but est de créer en premier un alignement de trois signes (des ronds et des croix). Il tire son origine de l’Égypte Antique où ont été retrouvées des parties datant d’environ 1300 av. J.C.
 
-Nous allons, grâce au langage Python, créé l’algorithme du morpion en lui même. Il sera composé de plusieurs fichiers :
+Nous allons, grâce au langage Python, créer l’algorithme du morpion en lui même. Il sera composé de plusieurs fichiers :
 - game.py, qui se charge du déroulement général de la partie,
 - player.py, qui correspond aux données basiques de tout joueur (signe, fonction qui permet de récupérer son jeu),
 - human.py, qui est une implémentation de player.py, c’est à dire qu’il sera basé sur ce fichier en y ajoutant des fonctionnalités,
 - Et main.py, qui vient mettre tout ça ensemble et lancer la partie.
 
-Commençons par game.py. La première fonction est la fonction d’initialisation de l’objet. Elle créé un tableau de jeu et enregistre les joueurs données par le fichier main.py que nous verrons plus loin.
+Commençons par game.py. Sa première fonction est la fonction d’initialisation de l’objet. Elle crée un tableau de jeu et enregistre les joueurs données par le fichier main.py que nous verrons plus loin.
 
-Ensuite, vient la fonction start : elle démarre la partie et gère son déroulement. Une boucle fait jouer chaque joueur chacun leur tour jusqu’à ce qu’il y aie un gagnant ou un match nul (instruction while et for). A chaque tour elle affiche le tableau de jeu actuel (fonction show, que nous verrons après), le joueur qui joue (fonction print), et récupère le coup du joueur (fonction play que nous verrons aussi après). Elle est positionné dans une boucle pour redemander au joueur son jeu si il n’est pas valide (case déjà prise ou n’appartenant pas au tableau. Une fois ce processus terminée, elle affiche le gagnant, ou match nul si personne ne gagne.
+Ensuite, vient la fonction start : elle démarre la partie et gère son déroulement. Une boucle fait jouer chaque joueur chacun leur tour jusqu’à ce qu’il y aie un gagnant ou un match nul (instruction while et for). A chaque tour elle affiche le tableau de jeu actuel (fonction show, que nous verrons après), le joueur qui joue (fonction print), et récupère le coup du joueur (fonction play que nous verrons aussi après). Elle est positionnée dans une boucle pour redemander au joueur son jeu s'il n’est pas valide (case déjà prise ou n’appartenant pas au tableau. Une fois ce processus terminé, elle affiche le gagnant, ou match nul si personne ne gagne.
 
 Continuons avec la fonction show, elle se charge de parcourir le tableau pour l’afficher avec le numéro des lignes et des colonnes.
 
@@ -104,4 +104,6 @@ Il nous reste à rajouter dans le fichier main.py les configurations qui permett
 
 ### Conclusion
 
-TODO
+Pour créer notre intelligence artificielle, nous avons d'abord créé un algorithme grâce à plusieurs fichiers écrit avec le language python, permettant le jeu du morpion en lui même. Enfin, nous avons imaginer notre stratégie à l'aide de l'étude de statistiques, que nous avons ensuite mis en place dans notre algorihme dans un autre fichier python.
+
+Comme notre intelligence artificielle est plus forte qu'un humain sur le jeu du morpion, nous pourrions nous demander si, dans le futur, l'intelligence artificielle pourrait remplacer l'humanité.
